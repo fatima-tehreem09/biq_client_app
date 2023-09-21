@@ -1,4 +1,3 @@
-import 'package:biq/src/pages/auth_pages/forgot_password_page.dart';
 import 'package:biq/src/pages/auth_pages/register_page.dart';
 import 'package:biq/src/utils/color.dart';
 import 'package:biq/src/utils/images.dart';
@@ -8,16 +7,16 @@ import 'package:biq/src/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.isBusinessUser});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key, required this.isBusinessUser});
 
   final bool isBusinessUser;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     var isBusiness = widget.isBusinessUser;
@@ -30,48 +29,23 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (isBusiness)
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                          onTap: () => Navigator.of(context).pop(),
-                          child: Image.asset(AppImages.backIcon,
-                              width: 27, height: 15)),
-                    ],
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: Image.asset(AppImages.backIcon,
+                            width: 27, height: 15)),
+                  ],
                 ),
-              if (!isBusiness)
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          AppNavigation.push(
-                              context,
-                              const LoginPage(
-                                isBusinessUser: true,
-                              ));
-                        },
-                        child: Text(
-                          'Business User?',
-                          style: GoogleFonts.poppins(
-                              fontSize: 12, color: AppColors.greenShade),
-                        ),
-                      ),
-                      const SizedBox(width: 20)
-                    ],
-                  ),
-                ),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
                 child: Text(
-                  isBusiness ? 'Business User Login' : 'Login',
+                  'Reset Password',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                       fontSize: 24,
@@ -125,36 +99,14 @@ class _LoginPageState extends State<LoginPage> {
                 child: AppTextField(hint: 'Enter your password'),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        AppNavigation.push(context,
-                            const ForgotPasswordPage(isBusinessUser: false));
-                      },
-                      child: Text(
-                        'Forgot Password?',
-                        style: GoogleFonts.poppins(
-                            decoration: TextDecoration.underline,
-                            fontSize: 12,
-                            color: AppColors.greenShade),
-                      ),
-                    ),
-                    const SizedBox(width: 20)
-                  ],
-                ),
-              ),
-              Padding(
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, bottom: 30, top: 50),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Expanded(
-                        child:
-                            AppButtonWidget(title: 'Login', onPressed: () {})),
+                        child: AppButtonWidget(
+                            title: 'Reset Password', onPressed: () {})),
                   ],
                 ),
               ),
