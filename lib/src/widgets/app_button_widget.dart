@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:biq/src/utils/color.dart';
+import 'package:biq/src/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,8 +24,7 @@ class AppButtonWidget extends StatelessWidget {
           min(200, MediaQuery.sizeOf(context).width - 80),
           60,
         ),
-        backgroundColor: AppColors
-            .greenShade, // Change this to your desired background color
+        backgroundColor: AppColors.greenShade,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -34,6 +34,19 @@ class AppButtonWidget extends StatelessWidget {
               fontSize: 14,
               color: AppColors.white,
               fontWeight: FontWeight.bold)),
+    );
+  }
+}
+
+class AppLogoWidget extends StatelessWidget {
+  const AppLogoWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 160,
+      height: 60,
+      child: Image.asset(AppImages.logo),
     );
   }
 }

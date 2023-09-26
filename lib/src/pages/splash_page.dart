@@ -4,6 +4,7 @@ import 'package:biq/src/pages/onboard_page.dart';
 import 'package:biq/src/utils/color.dart';
 import 'package:biq/src/utils/images.dart';
 import 'package:biq/src/utils/nav.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -31,6 +32,7 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: AppColors.black,
       body: Center(
         child: Container(
+          width: kIsWeb ? 450 : null,
           margin: const EdgeInsets.symmetric(horizontal: 34),
           child: Image.asset(AppImages.logo, fit: BoxFit.cover),
         ),
