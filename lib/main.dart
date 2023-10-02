@@ -1,4 +1,8 @@
-import 'package:biq/src/pages/splash_page.dart';
+import 'package:biq/src/components/auth/forgot/forgot_password_page.dart';
+import 'package:biq/src/components/auth/login/login_page.dart';
+import 'package:biq/src/components/auth/register/register_page.dart';
+import 'package:biq/src/components/onboarding/onboarding_page.dart';
+import 'package:biq/src/components/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:reusables/utils/awaiter.dart';
 
@@ -15,8 +19,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashPage(),
+    return   MaterialApp(
+      theme: ThemeData(
+           primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home:  SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }

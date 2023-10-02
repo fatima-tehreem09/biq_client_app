@@ -16,6 +16,7 @@ class AppTextField extends StatefulWidget {
     this.onCountryTap,
     BuildContext? context,
     this.onTap,
+    this.textFieldUpperText
   }) : super(key: key);
 
   // final bool obscure;
@@ -29,6 +30,7 @@ class AppTextField extends StatefulWidget {
   final FormFieldValidator<String?>? validator;
   final TextEditingController? textEditingController;
   final VoidCallback? onCountryTap;
+  final String? textFieldUpperText;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -37,62 +39,84 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 19),
-      child: TextFormField(
-        readOnly: widget.readOnly ?? false,
-        style: GoogleFonts.poppins(
-          color: AppColors.white,
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
+    return Column(
+      children: [
+        Padding(
+          padding:
+          const EdgeInsets.only(left: 5, bottom: 10),
+          child: Row(
+            children: [
+              Text(
+                '${widget.textFieldUpperText}',
+                style: GoogleFonts.poppins(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.white),
+              ),
+            ],
+          ),
         ),
-        onTap: widget.onTap,
-        keyboardType: widget.keyboardType,
-        validator: widget.validator,
-        controller: widget.textEditingController,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        decoration: InputDecoration(
-          prefix: widget.prefix == null
-              ? const SizedBox()
-              : Text(
-                  widget.prefix!,
-                  style: GoogleFonts.lato(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 21,
+        TextFormField(
+          readOnly: widget.readOnly ?? false,
+          style: GoogleFonts.poppins(
+            color: AppColors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+          onTap: widget.onTap,
+          keyboardType: widget.keyboardType,
+          validator: widget.validator,
+          controller: widget.textEditingController,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          decoration: InputDecoration(
+
+            prefix: widget.prefix == null
+                ? const SizedBox()
+                : Text(
+                    widget.prefix!,
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 21,
+                    ),
                   ),
-                ),
-          suffix: widget.suffix == null
-              ? const SizedBox()
-              : GestureDetector(
-                  onTap: () {
-                    widget.onCountryTap!();
-                    setState(() {});
-                  },
-                  child: Image.asset(
-                    'assets/flags/${widget.suffix!}.png',
-                    width: 32,
+            suffix: widget.suffix == null
+                ? const SizedBox()
+                : GestureDetector(
+                    onTap: () {
+                      widget.onCountryTap!();
+                      setState(() {});
+                    },
+                    child: Image.asset(
+                      'assets/flags/${widget.suffix!}.png',
+                      width: 32,
+                    ),
                   ),
-                ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+              borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+
+              borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+
+              borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
+            ),
+            labelText: widget.label,
+            hintText: widget.hint,
+            hintStyle: GoogleFonts.poppins(color: AppColors.white, fontSize: 12),
+            labelStyle: GoogleFonts.poppins(
+                color: Colors.black.withOpacity(0.4),
+                fontWeight: FontWeight.w500,
+                fontSize: 16),
           ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
-          ),
-          labelText: widget.label,
-          hintText: widget.hint,
-          hintStyle: GoogleFonts.poppins(color: AppColors.white, fontSize: 12),
-          labelStyle: GoogleFonts.poppins(
-              color: Colors.black.withOpacity(0.4),
-              fontWeight: FontWeight.w500,
-              fontSize: 16),
+          cursorColor: Colors.grey,
         ),
-        cursorColor: Colors.grey,
-      ),
+      ],
     );
   }
 }
