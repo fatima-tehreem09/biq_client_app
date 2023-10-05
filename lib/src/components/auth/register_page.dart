@@ -1,4 +1,4 @@
-// import 'package:biq/src/components/auth/login_page.dart';
+// import 'package:biq/src/components/auth/home_page.dart';
 // import 'package:biq/src/utils/color.dart';
 // import 'package:biq/src/utils/images.dart';
 // import 'package:biq/src/utils/nav.dart';

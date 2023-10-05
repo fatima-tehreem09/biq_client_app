@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:biq/src/components/auth/register/register_page.dart';
+import 'package:biq/src/base/nav.dart';
 import 'package:biq/src/widgets/app_layout_builder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/color.dart';
 import '../../../utils/images.dart';
-import '../../../utils/nav.dart';
 import '../../../widgets/app_button_widget.dart';
 import '../../../widgets/text_field.dart';
 
@@ -50,12 +49,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 onTap: () => Navigator.of(context).pop(),
                                 child: Image.asset(AppImages.backIcon,
                                     width: 27, height: 15)),
-
-
-
-                              ],
-                            ),
-                          ),
+                        ],
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 35, vertical: 20),
@@ -81,7 +77,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(
+                      height: 30,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: AppTextField(
@@ -90,7 +88,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
                       child: AppTextField(
                         hint: 'Enter your password',
                         textFieldUpperText: "Password",
@@ -104,13 +103,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         children: [
                           Expanded(
                               child: AppButtonWidget(
-                                  title: 'Reset Password',
-                                  onPressed: () {})),
-
+                                  title: 'Reset Password', onPressed: () {})),
                         ],
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.only(left: 20, bottom: 30),
                       child: Row(
@@ -123,8 +119,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              AppNavigation.push(context,
-                                  const RegisterPage(isBusinessUser: false));
+                              // AppNavigation.push(context,
+                              //     const RegisterPage(isBusinessUser: false));
+                              AppNavigation.goPush(AppPages.registerPage);
                             },
                             child: Text(
                               'Register Now!',

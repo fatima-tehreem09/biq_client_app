@@ -35,7 +35,7 @@ class AppPage {
   static const homePage = AppPage._('/home-page');
 }
 
-abstract class AppNavigation {
+abstract class AppNavigationWithoutRoutes {
   static Future<dynamic> push(
     BuildContext context,
     Widget page,

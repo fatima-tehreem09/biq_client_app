@@ -16,7 +16,8 @@ class AppTextField extends StatefulWidget {
     this.onCountryTap,
     BuildContext? context,
     this.onTap,
-    this.textFieldUpperText
+    this.textFieldUpperText,
+    this.onSaved,
   }) : super(key: key);
 
   // final bool obscure;
@@ -31,6 +32,7 @@ class AppTextField extends StatefulWidget {
   final TextEditingController? textEditingController;
   final VoidCallback? onCountryTap;
   final String? textFieldUpperText;
+  final FormFieldSetter<String>? onSaved;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -42,8 +44,7 @@ class _AppTextFieldState extends State<AppTextField> {
     return Column(
       children: [
         Padding(
-          padding:
-          const EdgeInsets.only(left: 5, bottom: 10),
+          padding: const EdgeInsets.only(left: 5, bottom: 10),
           child: Row(
             children: [
               Text(
@@ -68,8 +69,8 @@ class _AppTextFieldState extends State<AppTextField> {
           validator: widget.validator,
           controller: widget.textEditingController,
           autovalidateMode: AutovalidateMode.onUserInteraction,
+          onSaved: widget.onSaved,
           decoration: InputDecoration(
-
             prefix: widget.prefix == null
                 ? const SizedBox()
                 : Text(
@@ -98,17 +99,16 @@ class _AppTextFieldState extends State<AppTextField> {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(7),
-
               borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(7),
-
               borderSide: BorderSide(color: AppColors.lightBlack, width: 1),
             ),
             labelText: widget.label,
             hintText: widget.hint,
-            hintStyle: GoogleFonts.poppins(color: AppColors.white, fontSize: 12),
+            hintStyle:
+                GoogleFonts.poppins(color: AppColors.white, fontSize: 12),
             labelStyle: GoogleFonts.poppins(
                 color: Colors.black.withOpacity(0.4),
                 fontWeight: FontWeight.w500,

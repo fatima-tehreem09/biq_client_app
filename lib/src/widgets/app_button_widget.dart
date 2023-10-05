@@ -38,6 +38,31 @@ class AppButtonWidget extends StatelessWidget {
   }
 }
 
+class ApiButtonWidget extends StatelessWidget {
+  const ApiButtonWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.sizeOf(context).width - 80,
+      height: 60,
+      decoration: BoxDecoration(
+        color: AppColors.greenShade,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Center(
+        child: Text(
+          'Please wait......',
+          style: GoogleFonts.poppins(
+              fontSize: 14,
+              color: AppColors.white,
+              fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
+
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({super.key});
 

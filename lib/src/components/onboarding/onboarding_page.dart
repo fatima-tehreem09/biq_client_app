@@ -1,14 +1,13 @@
 import 'dart:math';
 
+import 'package:biq/src/base/nav.dart';
 import 'package:biq/src/widgets/app_layout_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/color.dart';
 import '../../utils/images.dart';
-import '../../utils/nav.dart';
 import '../../widgets/app_button_widget.dart';
-import '../auth/login/login_page.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -27,6 +26,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     AppImages.logo,
     AppImages.logo,
   ];
+
   @override
   Widget build(BuildContext context) {
     return AppLayoutBuilder((context, type, width) {
@@ -34,7 +34,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         backgroundColor: AppColors.black,
         body: SingleChildScrollView(
           padding:
-          EdgeInsets.only(top: MediaQuery.of(context).padding.top + 30),
+              EdgeInsets.only(top: MediaQuery.of(context).padding.top + 30),
           child: Center(
             child: SizedBox(
               width: min(600, width),
@@ -46,21 +46,22 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        if(type.isMobile)
-                        GestureDetector(
-                          onTap: () {
-                            AppNavigation.navigateRemoveUntil(
-                                context,
-                                const LoginPage(
-                                  isBusinessUser: false,
-                                ));
-                          },
-                          child: Text(
-                            'Skip',
-                            style: GoogleFonts.poppins(
-                                fontSize: 16, color: AppColors.white),
+                        if (type.isMobile)
+                          GestureDetector(
+                            onTap: () {
+                              AppNavigation.goPush(AppPages.signIn);
+                              // AppNavigation.navigateRemoveUntil(
+                              //     context,
+                              //     const LoginPage(
+                              //       isBusinessUser: false,
+                              //     ));
+                            },
+                            child: Text(
+                              'Skip',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 16, color: AppColors.white),
+                            ),
                           ),
-                        ),
                         const SizedBox(width: 20)
                       ],
                     ),
@@ -92,15 +93,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         );
                       },
                     ),
-
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: _buildDots(),
                   ),
                   Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 35, vertical: 50),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 35, vertical: 50),
                     child: Text(
                       textAlign: TextAlign.center,
                       'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum sunt in culpa qui.',
@@ -116,13 +116,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       children: [
                         Expanded(
                             child: AppButtonWidget(
-                                title: type.isMobile?'Next':"Skip",
+                                title: type.isMobile ? 'Next' : "Skip",
                                 onPressed: () {
-                                  AppNavigation.navigateRemoveUntil(
-                                      context,
-                                      const LoginPage(
-                                        isBusinessUser: false,
-                                      ));
+                                  AppNavigation.goNamed(AppPages.signIn);
+                                  // AppNavigation.navigateRemoveUntil(
+                                  //     context,
+                                  //     const LoginPage(
+                                  //       isBusinessUser: false,
+                                  //     ));
                                 })),
                       ],
                     ),
@@ -135,6 +136,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       );
     });
   }
+
   List<Widget> _buildDots() {
     List<Widget> dots = [];
     for (int i = 0; i < imageUrls.length; i++) {

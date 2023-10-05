@@ -1,7 +1,6 @@
 import 'package:biq/src/base/modals/dialogs/_base_dialog.dart';
 import 'package:biq/src/utils/color.dart';
-import 'package:biq/src/utils/dio_exception.dart';
-import 'package:biq/src/utils/images.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
